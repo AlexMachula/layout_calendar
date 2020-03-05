@@ -30,11 +30,10 @@ h1 {
 
 .calendar {
   display: flex;
-  flex-flow: row wrap;
+  flex-wrap: wrap;
   max-width: 707px;
 
   div {
-    position: relative;
     height: 100px;
     width: 100px;
     background-color: #eee;
@@ -42,18 +41,15 @@ h1 {
     box-sizing: border-box;
     line-height: 100px;
     text-align: center;
-    margin: 1px;
-  }
-
-  div:nth-child(31) {
-    display: none;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    transition: background-color 0.5s, transform 0.5s;
   }
 
   div:hover {
     cursor: pointer;
     background-color: pink;
-    top: -20px;
-    transition-duration: 0.5s;
+    transform: translate(0, -20px);
   }
 
   @for $i from 1 through 31 {
@@ -70,7 +66,7 @@ h1 {
 }
 
 @each $day, $amount in $month {
-  .calendar-#{day} div:nth-child(n + #{$amount}) {
+  .calendar-#{$day} div:nth-child(n + #{$amount}) {
     display: none;
   }
 }
