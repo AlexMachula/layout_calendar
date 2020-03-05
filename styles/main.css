@@ -19,13 +19,10 @@ h1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   max-width: 707px; }
   .calendar div {
-    position: relative;
     height: 100px;
     width: 100px;
     background-color: #eee;
@@ -34,15 +31,17 @@ h1 {
             box-sizing: border-box;
     line-height: 100px;
     text-align: center;
-    margin: 1px; }
-  .calendar div:nth-child(31) {
-    display: none; }
+    margin-right: 1px;
+    margin-bottom: 1px;
+    -webkit-transition: background-color 0.5s, -webkit-transform 0.5s;
+    transition: background-color 0.5s, -webkit-transform 0.5s;
+    transition: background-color 0.5s, transform 0.5s;
+    transition: background-color 0.5s, transform 0.5s, -webkit-transform 0.5s; }
   .calendar div:hover {
     cursor: pointer;
     background-color: pink;
-    top: -20px;
-    -webkit-transition-duration: 0.5s;
-            transition-duration: 0.5s; }
+    -webkit-transform: translate(0, -20px);
+            transform: translate(0, -20px); }
   .calendar div:nth-child(1)::after {
     content: "1"; }
   .calendar div:nth-child(2)::after {
@@ -127,16 +126,16 @@ h1 {
 .calendar-sun div:first-child {
   margin-left: 606px; }
 
-.calendar-day div:nth-child(n + 29) {
+.calendar-28 div:nth-child(n + 29) {
   display: none; }
 
-.calendar-day div:nth-child(n + 30) {
+.calendar-29 div:nth-child(n + 30) {
   display: none; }
 
-.calendar-day div:nth-child(n + 31) {
+.calendar-30 div:nth-child(n + 31) {
   display: none; }
 
-.calendar-day div:nth-child(n + 32) {
+.calendar-31 div:nth-child(n + 32) {
   display: none; }
 
 /*# sourceMappingURL=main.css.map */
