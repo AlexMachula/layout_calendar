@@ -1,0 +1,76 @@
+$days: (
+  "mon": 0,
+  "tue": 1,
+  "wed": 2,
+  "thu": 3,
+  "fri": 4,
+  "sat": 5,
+  "sun": 6
+);
+
+$month: (
+  "28": 29,
+  "29": 30,
+  "30": 31,
+  "31": 32
+);
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+}
+
+h1 {
+  display: none;
+}
+
+.calendar {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 707px;
+
+  div {
+    position: relative;
+    height: 100px;
+    width: 100px;
+    background-color: #eee;
+    border: 1px solid black;
+    box-sizing: border-box;
+    line-height: 100px;
+    text-align: center;
+    margin: 1px;
+  }
+
+  div:nth-child(31) {
+    display: none;
+  }
+
+  div:hover {
+    cursor: pointer;
+    background-color: pink;
+    top: -20px;
+    transition-duration: 0.5s;
+  }
+
+  @for $i from 1 through 31 {
+    div:nth-child(#{$i})::after {
+      content: "#{$i}";
+    }
+  }
+}
+
+@each $week, $day in $days {
+  .calendar-#{$week} div:first-child {
+    margin-left: 100px * $day + $day;
+  }
+}
+
+@each $day, $amount in $month {
+  .calendar-#{day} div:nth-child(n + #{$amount}) {
+    display: none;
+  }
+}
